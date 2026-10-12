@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HALCYON: Five Nights at the Aviary</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="screen" width="1280" height="720"></canvas>
+
+    <!-- Main menu -->
+    <div id="menu" class="overlay">
+      <div class="menu-left">
+        <h1 class="title">HALCYON</h1>
+        <div class="subtitle">Five Nights at the Aviary</div>
+        <div class="menu-buttons">
+          <button data-action="new">New Game</button>
+          <button data-action="continue" id="btn-continue">Continue</button>
+          <button data-action="night6" id="btn-night6" class="hidden">Night 6</button>
+          <button data-action="custom" id="btn-custom" class="hidden">Custom Night</button>
+          <button data-action="wise" id="btn-wise" class="hidden">Wise Night</button>
+          <button data-action="archive">Archive</button>
+          <button data-action="settings">Settings</button>
+        </div>
+        <div id="menu-stats" class="menu-stats"></div>
+      </div>
+      <div class="menu-foot">v1.0 &middot; Aquila Holdings is not responsible for injuries sustained during improper conduct.</div>
+    </div>
+
+    <!-- Archive -->
+    <div id="archive" class="overlay panel hidden">
+      <h2>The Archive</h2>
+      <div class="archive-wrap">
+        <div id="archive-list" class="archive-list"></div>
+        <div id="archive-doc" class="archive-doc"></div>
+      </div>
+      <button class="back" data-action="back">Back</button>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="overlay panel hidden">
+      <h2>Settings</h2>
+      <label>Master volume <input type="range" id="set-volume" min="0" max="100" value="80" /></label>
+      <label><input type="checkbox" id="set-voice" checked /> Read phone calls aloud (text-to-speech)</label>
+      <label><input type="checkbox" id="set-warp" checked /> Office lens warp</label>
+      <label><input type="checkbox" id="set-shake" checked /> Screen shake</label>
+      <button id="btn-reset" class="danger">Erase save data</button>
+      <div class="controls-help">
+        <h3>Controls</h3>
+        <p><b>Mouse</b> near screen edges to look around. Click door and light buttons on the walls.</p>
+        <p><b>Space</b> camera monitor &middot; <b>1-9</b> pick camera &middot; <b>Q / E</b> left / right door &middot; <b>A / D</b> left / right light</p>
+        <p><b>Hold F</b> (or hold the paper on the desk) to fold a paper crane &middot; <b>Hold W</b> on CAM 7 to wind the music box</p>
+        <p><b>M</b> mute the phone call.</p>
+        <p>Wise Night only: <b>X</b> put on / remove the mask &middot; <b>Z</b> taze the camera you are viewing.</p>
+      </div>
+      <button class="back" data-action="back">Back</button>
+    </div>
+
+    <!-- Custom night -->
+    <div id="custom" class="overlay panel hidden">
+      <h2>Custom Night</h2>
+      <div id="custom-sliders" class="custom-sliders"></div>
+      <div class="custom-actions">
+        <button id="btn-custom-start">Begin</button>
+        <button class="back" data-action="back">Back</button>
+      </div>
+    </div>
+
+    <!-- Overtime between nights -->
+    <div id="overtime" class="overlay panel hidden">
+      <h2 id="ot-title">Overtime</h2>
+      <p class="ot-intro">Your shift is over, but Aquila Holdings needs one more thing before you go home. You cannot leave until it is done. Not every bird has gone to sleep.</p>
+      <div class="ot-brief">
+        <p id="ot-desc"></p>
+        <p id="ot-controls" class="ot-controls"></p>
+        <p id="ot-threat" class="ot-threat"></p>
+      </div>
+      <div class="custom-actions">
+        <button id="btn-ot-begin">Clock in</button>
+        <button class="back" data-action="back">Main menu</button>
+      </div>
+    </div>
+
+    <!-- Death / message / ending -->
+    <div id="message" class="overlay message hidden">
+      <h2 id="msg-title"></h2>
+      <p id="msg-body"></p>
+      <p id="msg-hint" class="hint"></p>
+      <div class="msg-actions">
+        <button id="msg-retry">Try again</button>
+        <button id="msg-extra" class="hidden"></button>
+        <button id="msg-menu">Main menu</button>
+      </div>
+    </div>
+
+    <!-- In-game subtitles / toasts -->
+    <div id="subtitles" class="subtitles hidden"></div>
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/overtime.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
